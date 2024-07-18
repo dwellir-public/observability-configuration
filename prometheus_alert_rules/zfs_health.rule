@@ -1,0 +1,8 @@
+groups:
+  - name: ZFS
+    rules:
+    - alert: ZFSPoolHealth
+      expr: zfs_pool_health
+      for: 0m
+      labels:
+        severity: critical

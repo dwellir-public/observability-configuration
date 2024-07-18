@@ -2,7 +2,7 @@ groups:
   - name: Substrate
     rules:
     - alert: SubstrateNodeMissingPeers
-      expr: substrate_sync_peers
-      for: 10m
+      expr: substrate_sync_peers < 10
+      for: 1m
       labels:
         severity: critical

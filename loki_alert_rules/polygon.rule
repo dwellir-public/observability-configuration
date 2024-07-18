@@ -2,7 +2,7 @@ groups:
   - name: Polygon
     rules:
     - alert: BorHeimdallMismatch
-      expr: count_over_time({job=~".*bor.*} |= 'err="missing blocks"' [10m]) > 2
+      expr: count_over_time({juju_model=~".*polygon.*"} |= `err="missing blocks"` [5m]) > bool 2
       for: 5m
       labels:
         severity: warning

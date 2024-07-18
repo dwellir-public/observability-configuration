@@ -111,7 +111,7 @@
             "uid": "${prometheusds}"
           },
           "editorMode": "code",
-          "expr": "increase(rpc_requests{job=~~\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}[1m])",
+          "expr": "increase(rpc_requests{job=~\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}[1m])",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"

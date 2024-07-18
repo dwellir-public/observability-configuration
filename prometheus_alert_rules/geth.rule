@@ -1,0 +1,21 @@
+groups:
+  - name: Geth
+    rules:
+    - alert: GethNodeFewPeers
+      expr: p2p_peers < 10
+      for: 1m
+      labels:
+        severity: warning
+      annotations:
+        summary: Node in '{{ $labels.juju_model }}' has few peers
+        description: >-
+          Node in '{{ $labels.juju_model }}' has fewer than 10 peers.
+    - alert: GethNodeLacksPeers
+      expr: p2p_peers < 1
+      for: 1m
+      labels:
+        severity: critical
+      annotations:
+        summary: No Peers For '{{ $labels.juju_model }}'.
+        description: |
+          Node in '{{ $labels.juju_model }}' has no peers and can not sync with the chain.

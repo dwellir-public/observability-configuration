@@ -1,0 +1,12 @@
+groups:
+  - name: Geth
+    rules:
+    - alert: BorHeimdallMismatch
+      expr: count_over_time({job=~".*bor.*} |= 'err="missing blocks"' [10m]) > 2
+      for: 5m
+      labels:
+        severity: warning
+      annotations:
+        summary: Heimdall errors in bor node.
+        description: >-
+          Node in '{{ $labels.juju_model }}' has trouble with heimdall checkpoints.

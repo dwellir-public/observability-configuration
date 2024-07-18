@@ -1,0 +1,8 @@
+groups:
+  - name: Substrate
+    rules:
+    - alert: SubstrateNodeMissingPeers
+      expr: substrate_sync_peers < 1
+      for: 10m
+      labels:
+        severity: critical

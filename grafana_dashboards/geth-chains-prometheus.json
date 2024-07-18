@@ -111,7 +111,7 @@
             "uid": "${prometheusds}"
           },
           "editorMode": "code",
-          "expr": "increase(rpc_requests{job=\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}[1m])",
+          "expr": "increase(rpc_requests{job=~~\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}[1m])",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -177,7 +177,7 @@
             "uid": "${prometheusds}"
           },
           "editorMode": "code",
-          "expr": "rpc_requests{job=\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}",
+          "expr": "rpc_requests{job=~\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -273,7 +273,7 @@
             "uid": "${prometheusds}"
           },
           "editorMode": "code",
-          "expr": "increase(rpc_requests{job=\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}[1m])",
+          "expr": "increase(rpc_requests{job=~\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}[1m])",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -366,7 +366,7 @@
             "uid": "${prometheusds}"
           },
           "editorMode": "code",
-          "expr": "increase(rpc_requests{job=\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}[1m]) / 60",
+          "expr": "increase(rpc_requests{job=~\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}[1m]) / 60",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -430,7 +430,7 @@
             "uid": "${prometheusds}"
           },
           "editorMode": "code",
-          "expr": "increase(rpc_requests{job=\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}[1m]) / 60",
+          "expr": "increase(rpc_requests{job=~\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}[1m]) / 60",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -531,7 +531,7 @@
             "uid": "${prometheusds}"
           },
           "editorMode": "code",
-          "expr": "chain_head_block{job=\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}",
+          "expr": "chain_head_block{job=~\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -647,7 +647,7 @@
             "uid": "${prometheusds}"
           },
           "editorMode": "code",
-          "expr": "rate(txpool_known{job=\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}[1m])",
+          "expr": "rate(txpool_known{job=~\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}[1m])",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -775,7 +775,7 @@
             "uid": "${prometheusds}"
           },
           "editorMode": "code",
-          "expr": "txpool_pending{job=\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}",
+          "expr": "txpool_pending{job=~\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -837,7 +837,7 @@
             "uid": "${prometheusds}"
           },
           "editorMode": "code",
-          "expr": "node_memory_MemTotal_bytes{job=\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}",
+          "expr": "node_memory_MemTotal_bytes{job=~\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -900,7 +900,7 @@
             "uid": "${prometheusds}"
           },
           "editorMode": "code",
-          "expr": "system_cpu_threads{job=\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}",
+          "expr": "system_cpu_threads{job=~\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -976,7 +976,7 @@
             "uid": "${prometheusds}"
           },
           "editorMode": "code",
-          "expr": "chain_head_receipt{job=\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}",
+          "expr": "chain_head_receipt{job=~\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -1067,7 +1067,7 @@
             "uid": "${prometheusds}"
           },
           "editorMode": "code",
-          "expr": "system_cpu_procload{job=\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}",
+          "expr": "system_cpu_procload{job=~\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -1130,7 +1130,7 @@
             "uid": "${prometheusds}"
           },
           "editorMode": "code",
-          "expr": "system_memory_used{job=\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}",
+          "expr": "system_memory_used{job=~\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -1194,7 +1194,7 @@
             "uid": "${prometheusds}"
           },
           "editorMode": "code",
-          "expr": "p2p_peers{job=\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}",
+          "expr": "p2p_peers{job=~\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -1305,7 +1305,7 @@
             "uid": "${prometheusds}"
           },
           "editorMode": "code",
-          "expr": "p2p_peers{job=\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}",
+          "expr": "p2p_peers{job=~\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -1367,7 +1367,7 @@
             "uid": "${prometheusds}"
           },
           "editorMode": "code",
-          "expr": "rate(p2p_egress{job=\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}[5m])",
+          "expr": "rate(p2p_egress{job=~\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}[5m])",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -1378,7 +1378,7 @@
             "uid": "${prometheusds}"
           },
           "editorMode": "code",
-          "expr": "rate(p2p_ingress{job=\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}[5m])",
+          "expr": "rate(p2p_ingress{job=~\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}[5m])",
           "hide": false,
           "legendFormat": "__auto",
           "range": true,
@@ -1471,7 +1471,7 @@
             "uid": "${prometheusds}"
           },
           "editorMode": "code",
-          "expr": "rate(p2p_egress{job=\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}[5m])",
+          "expr": "rate(p2p_egress{job=~\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}[5m])",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -1563,7 +1563,7 @@
             "uid": "${prometheusds}"
           },
           "editorMode": "code",
-          "expr": "rate(p2p_egress{job=\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}[5m])",
+          "expr": "rate(p2p_egress{job=~\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}[5m])",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -1624,7 +1624,7 @@
             "uid": "${prometheusds}"
           },
           "editorMode": "code",
-          "expr": "rate(system_disk_readbytes{job=\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}[5m])",
+          "expr": "rate(system_disk_readbytes{job=~\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}[5m])",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -1635,7 +1635,7 @@
             "uid": "${prometheusds}"
           },
           "editorMode": "code",
-          "expr": "rate(system_disk_writebytes{job=\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}[5m])",
+          "expr": "rate(system_disk_writebytes{job=~\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}[5m])",
           "hide": false,
           "legendFormat": "__auto",
           "range": true,
@@ -1739,7 +1739,7 @@
             "uid": "${prometheusds}"
           },
           "editorMode": "code",
-          "expr": "rate(system_disk_readbytes{job=\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}[1m])",
+          "expr": "rate(system_disk_readbytes{job=~\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}[1m])",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -1842,7 +1842,7 @@
             "uid": "${prometheusds}"
           },
           "editorMode": "code",
-          "expr": "rate(system_disk_writebytes{job=\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}[1m])",
+          "expr": "rate(system_disk_writebytes{job=~\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}[1m])",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -1961,7 +1961,7 @@
             "uid": "${prometheusds}"
           },
           "editorMode": "code",
-          "expr": "eth_db_chaindata_disk_size{job=\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}",
+          "expr": "eth_db_chaindata_disk_size{job=~\"$job\",juju_application=~\"$juju_application\",juju_model=~\"$juju_model\",juju_model_uuid=~\"$juju_model_uuid\",juju_unit=~\"$juju_unit\"}",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"

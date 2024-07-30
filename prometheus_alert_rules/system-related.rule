@@ -32,7 +32,7 @@ groups:
     annotations:
       summary: ZFS pool {{ $labels.pool }} is unhealthy on instance {{ $labels.instance }}
       description: >-
-        This alert triggers when a zfs pool is something other than Online
+        "This alert triggers when a zfs pool is something other than Online
         ZFS pool {{ $labels.pool }} current state has value: {{ $value }}
           Value | State
           0       ONLINE
@@ -42,4 +42,4 @@ groups:
           4       UNAVAIL
           5       REMOVED
           6       SUSPENDED
-        [Read more here](https://docs.oracle.com/cd/E19253-01/819-5461/gamno/index.html)
+        [Read more here](https://docs.oracle.com/cd/E19253-01/819-5461/gamno/index.html)"

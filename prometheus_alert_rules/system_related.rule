@@ -18,7 +18,7 @@ groups:
     labels:
       level: 4
       severity: critical
-      host: {{ $labels.instance }}
+      host: "{{ $labels.instance }}"
     annotations:
       summary: ZFS arc cache is below 6% usage on instance {{ $labels.instance }}
       description: Alerts when total zfs arc usage is below 6%
@@ -30,7 +30,7 @@ groups:
       level: 4
       severity: critical
       system: hardware
-      host: {{ $labels.instance }}
+      host: "{{ $labels.instance }}"
     annotations:
       summary: ZFS pool {{ $labels.pool }} is unhealthy on instance {{ $labels.instance }}
       description: >-

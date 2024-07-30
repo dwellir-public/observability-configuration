@@ -22,8 +22,8 @@ groups:
       level: 4
       severity: warning
       system: hardware
-      host: {{ $labels.instance }}
-      name: {{ $labels.name }}
+      host: "{{ $labels.instance }}"
+      name: "{{ $labels.name }}"
     annotations:
       summary: Unhealthy fan at instance {{ $labels.instance }}
       description: "Alerts when a fan in a server is anything else than normal"
@@ -35,7 +35,7 @@ groups:
       level: 4
       severity: critical
       system: hardware
-      host: {{ $labels.instance }}
+      host: "{{ $labels.instance }}"
     annotations:
       summary: CPU is overheating, the temperature is above 95°C on instance {{ $labels.instance }}
       description: "Alerts when the CPU overheats, triggers when it has a temperature above 95°C on a server."

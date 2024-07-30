@@ -1,5 +1,5 @@
 groups:
-- name: 'hardware_related'
+- name: hardware_related
   rules:
   - alert: 'node-exporter-status'
     expr: up{job="prometheus-node-exporter"}[5m] < 1
@@ -14,6 +14,7 @@ groups:
         This could happen if the host itself is under high load or if the host itself gets unresponsive.
         Host = {{ $labels.instance }}
         Value = {{ $value }}
+
   - alert: 'fan-health'
     expr: ipmi_fan_speed_state > 0
     for: 1m
@@ -26,6 +27,7 @@ groups:
     annotations:
       summary: Unhealthy fan at instance {{ $labels.instance }}
       description: "Alerts when a fan in a server is anything else than normal"
+
   - alert: 'cpu-overheating'
     expr: ipmi_temperature_celsius{name=~"CPU Temp|CPU0_TEMP"} > 95
     for: 1m

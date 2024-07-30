@@ -1,5 +1,5 @@
 groups:
-- name: 'network_related'
+- name: network_related
   rules:
   # Checks total containers ingress bandwidth usage and alerts if above 80%
   - alert: 'LXD Network bandwidth usage (Ingress)'
@@ -14,6 +14,7 @@ groups:
         Checks total containers ingress bandwidth usage and alerts if above 80% \n
         Total: 2Gbit \n
         Value: {{ $value }}
+
   # Checks total containers egress bandwidth usage and alerts if above 80%
   - alert: 'LXD Network bandwidth usage (Egress)'
     expr: sum(rate(lxd_network_transmit_bytes_total{device!="lo"}[5m])) * 8 / 1000000 > 1600

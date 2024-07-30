@@ -1,0 +1,40 @@
+groups:
+- name: 'system-related'
+  rules:
+  - alert: 'mem-usage'
+    expr: >-
+      (100 - ((node_memory_MemAvailable_bytes{job="prometheus-node-exporter"} / 
+      node_memory_MemTotal_bytes{job="prometheus-node-exporter"}) * 100)) > 94 
+      AND 
+      ((node_zfs_arc_data_size{job="prometheus-node-exporter"} / 
+      node_memory_MemTotal_bytes{job="prometheus-node-exporter"}) * 100) < 5
+    for: 0m
+    labels:
+      level: 4
+      severity: critical
+      host: {{ $labels.instance }}
+    annotations:
+      summary: Memory usage is above 94% and ZFS ARC usage is below 5% on instance {{ $labels.instance }}
+      description: Alerts when total memory usage is above 94% and ZFS ARC usage is below 5%.
+  - alert: 'zfs-health'
+    expr: zfs_pool_health > 0
+    for: 0m
+    labels:
+      level: 4
+      severity: critical
+      system: hardware
+      host: {{ $labels.instance }}
+    annotations:
+      summary: ZFS pool {{ $labels.pool }} is unhealthy on instance {{ $labels.instance }}
+      description: >-
+        This alert triggers when a zfs pool is something other than Online
+        ZFS pool {{ $labels.pool }} current state has value: {{ $value }}
+          Value | State
+          0       ONLINE
+          1       DEGRADED
+          2       FAULTED
+          3       OFFLINE
+          4       UNAVAIL
+          5       REMOVED
+          6       SUSPENDED
+        [Read more here](https://docs.oracle.com/cd/E19253-01/819-5461/gamno/index.html)

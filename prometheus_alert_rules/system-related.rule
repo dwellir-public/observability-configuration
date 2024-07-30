@@ -2,12 +2,7 @@ groups:
 - name: 'system-related'
   rules:
   - alert: 'mem-usage'
-    expr: >-
-      (100 - ((node_memory_MemAvailable_bytes{job="prometheus-node-exporter"} / 
-      node_memory_MemTotal_bytes{job="prometheus-node-exporter"}) * 100)) > 94 
-      AND 
-      ((node_zfs_arc_data_size{job="prometheus-node-exporter"} / 
-      node_memory_MemTotal_bytes{job="prometheus-node-exporter"}) * 100) < 5
+    expr: (100 - ((node_memory_MemAvailable_bytes{job="prometheus-node-exporter"} / node_memory_MemTotal_bytes{job="prometheus-node-exporter"}) * 100)) > 94 AND ((node_zfs_arc_data_size{job="prometheus-node-exporter"} / node_memory_MemTotal_bytes{job="prometheus-node-exporter"}) * 100) < 5
     for: 0m
     labels:
       level: 4

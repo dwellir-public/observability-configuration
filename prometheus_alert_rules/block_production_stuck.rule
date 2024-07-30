@@ -1,8 +1,8 @@
 groups:
 - name: BlockProductionStuck
   rules:
-  - alert: BlockProductionStuck_Substrate
-    expr: increase(substrate_block_height{status="best", juju_model=~".*"}[5m]) < 5
+  - alert: BlockProductionStuck_Aptos
+    expr: increase(aptos_storage_ledger_version[1m]) < 5
     for: 1m
     labels:
       level: 3
@@ -10,10 +10,54 @@ groups:
     annotations:
       summary: '{{ $labels.juju_model }} has produced less than 5 blocks in the past 5 minutes.'
       description: >-
+        Block sync is too low for {{ $labels.juju_model }}
+        Value: {{ $value }}
+  - alert: BlockProductionStuck_Avalanche
+    expr: increase(avalanche_C_last_accepted_height[1m]) < 5
+    for: 1m
+    labels:
+      level: 3
+      severity: warning
+    annotations:
+      summary: '{{ $labels.juju_model }} has produced less than 5 blocks in the past 5 minutes.'
+      description: >-
+        Block sync is too low for {{ $labels.juju_model }}
+        Value: {{ $value }}
+  - alert: BlockProductionStuck_Chromia
+    expr: increase(chromia_subchain{}[60s]) < 1
+    for: 10s
+    labels:
+      level: 3
+      severity: warning
+    annotations:
+      summary: '{{ $labels.juju_model }} has produced less than 1 block in the past 60 seconds.'
+      description: >-
+        Block sync is too low for {{ $labels.juju_model }}
+        Value: {{ $value }}
+  - alert: BlockProductionStuck_Cronos
+    expr: increase(tendermint_consensus_latest_block_height{}[24s]) < 1
+    for: 10s
+    labels:
+      level: 3
+      severity: warning
+    annotations:
+      summary: '{{ $labels.juju_model }} has produced less than 1 block in the past 24 seconds.'
+      description: >-
+        Block sync is too low for {{ $labels.juju_model }}
+        Value: {{ $value }}
+  - alert: BlockProductionStuck_Erigon
+    expr: increase(sync{stage="execution"}[24s]) < 1
+    for: 5m
+    labels:
+      level: 3
+      severity: warning
+    annotations:
+      summary: '{{ $labels.juju_model }} has produced less than 1 blocks in the past 24 seconds.'
+      description: >-
         Block sync is too slow for {{ $labels.juju_model }}
-        Value = {{ $value }}
+        Value: {{ $value }}
   - alert: BlockProductionStuck_Ethereum
-    expr: increase(chain_head_block{juju_model=~".*"}[24s]) < 1
+    expr: increase(chain_head_block{}[24s]) < 1
     for: 10s
     labels:
       level: 3
@@ -23,14 +67,36 @@ groups:
       description: >-
         Block sync is too slow for {{ $labels.juju_model }}
         Value: {{ $value }}
-  - alert: BlockProductionStuck_Erigon
-    expr: increase(sync{stage="execution", juju_model=~".*"}[24s]) < 1
-    for: 5m
+  - alert: BlockProductionStuck_Nitro
+    expr: increase(arb_sequencenumber_inblock{}[60s]) < 1
+    for: 10s
     labels:
       level: 3
       severity: warning
     annotations:
-      summary: '{{ $labels.juju_model }} has produced less than 1 blocks in the past 5 minutes.'
+      summary: '{{ $labels.juju_model }} has produced less than 1 blocks in the past 24 seconds.'
       description: >-
         Block sync is too slow for {{ $labels.juju_model }}
         Value: {{ $value }}
+  - alert: BlockProductionStuck_Palm
+    expr: increase(ethereum_blockchain_height{}[20s]) < 1
+    for: 10s
+    labels:
+      level: 3
+      severity: warning
+    annotations:
+      summary: '{{ $labels.juju_model }} has produced less than 1 blocks in the past 20 seconds.'
+      description: >-
+        Block sync is too slow for {{ $labels.juju_model }}
+        Value: {{ $value }}
+  - alert: BlockProductionStuck_Substrate
+    expr: increase(substrate_block_height{status="best"}[5m]) < 5
+    for: 1m
+    labels:
+      level: 3
+      severity: warning
+    annotations:
+      summary: '{{ $labels.juju_model }} has produced less than 5 blocks in the past 5 minutes.'
+      description: >-
+        Block sync is too slow for {{ $labels.juju_model }}
+        Value = {{ $value }}

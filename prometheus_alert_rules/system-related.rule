@@ -2,15 +2,25 @@ groups:
 - name: 'system-related'
   rules:
   - alert: 'mem-usage'
-    expr: (100 - ((node_memory_MemAvailable_bytes{job="prometheus-node-exporter"} / node_memory_MemTotal_bytes{job="prometheus-node-exporter"}) * 100)) > 94 AND ((node_zfs_arc_data_size{job="prometheus-node-exporter"} / node_memory_MemTotal_bytes{job="prometheus-node-exporter"}) * 100) < 5
+    expr: (node_memory_MemAvailable_bytes + node_zfs_arc_data_size) / node_memory_MemTotal_bytes * 100 < 8
     for: 0m
     labels:
       level: 4
       severity: critical
       host: {{ $labels.instance }}
     annotations:
-      summary: Memory usage is above 94% and ZFS ARC usage is below 5% on instance {{ $labels.instance }}
-      description: Alerts when total memory usage is above 94% and ZFS ARC usage is below 5%.
+      summary: Memory usage is above 92% on instance {{ $labels.instance }}
+      description: Alerts when total memory usage is above 92%.
+  - alert: 'zfs-arc'
+    expr: (node_zfs_arc_data_size / node_memory_MemTotal_bytes) * 100 < 6
+    for: 5m
+    labels:
+      level: 4
+      severity: critical
+      host: {{ $labels.instance }}
+    annotations:
+      summary: ZFS arc cache is below 6% usage on instance {{ $labels.instance }}
+      description: Alerts when total zfs arc usage is below 6%
   - alert: 'zfs-health'
     expr: zfs_pool_health > 0
     for: 0m

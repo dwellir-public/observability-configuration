@@ -1,5 +1,5 @@
 groups:
-- name: hardware_related
+- name: 'hardware_related'
   rules:
   - alert: 'node-exporter-status'
     expr: up{job="prometheus-node-exporter"}[5m] < 1
@@ -10,7 +10,7 @@ groups:
     annotations:
       summary: Node-exporter is unresponsive on instance {{ $labels.instance }}
       description: >-
-        This alert capture the status of node-exporter. It will alert if node-exporter is unresponsive for 5 minutes. 
+        This alert capture the status of node-exporter. It will alert if node-exporter is unresponsive for 5 minutes.
         This could happen if the host itself is under high load or if the host itself gets unresponsive.
         Host = {{ $labels.instance }}
         Value = {{ $value }}

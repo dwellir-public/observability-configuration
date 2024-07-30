@@ -1,5 +1,5 @@
 groups:
-- name: BlockProductionStuck
+- name: block_production_stuck
   rules:
   - alert: BlockProductionStuck_Aptos
     expr: increase(aptos_storage_ledger_version[1m]) < 5

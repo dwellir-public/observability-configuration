@@ -1,5 +1,5 @@
 groups:
-- name: 'Network Related'
+- name: 'network_related'
   rules:
   # Checks total containers ingress bandwidth usage and alerts if above 80%
   - alert: 'LXD Network bandwidth usage (Ingress)'

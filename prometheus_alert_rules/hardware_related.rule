@@ -1,5 +1,5 @@
 groups:
-- name: 'Hardware Related'
+- name: hardware_related
   rules:
   - alert: 'node-exporter-status'
     expr: up{job="prometheus-node-exporter"}[5m] < 1

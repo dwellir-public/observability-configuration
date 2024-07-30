@@ -7,7 +7,7 @@ groups:
     labels:
       level: 4
       severity: critical
-      host: {{ $labels.instance }}
+      host: "{{ $labels.instance }}"
     annotations:
       summary: Memory usage is above 92% on instance {{ $labels.instance }}
       description: Alerts when total memory usage is above 92%.

@@ -10,7 +10,7 @@ groups:
     annotations:
       summary: Node-exporter is unresponsive on instance {{ $labels.instance }}
       description: >-
-        This alert capture the status of node-exporter. It will alert if node-exporter is unresponsive for 5 minutes.
+        This alert capture the status of node-exporter. It will alert if node-exporter is unresponsive for 5 minutes
         This could happen if the host itself is under high load or if the host itself gets unresponsive.
         Host = {{ $labels.instance }}
         Value = {{ $value }}
@@ -25,7 +25,7 @@ groups:
       name: {{ $labels.name }}
     annotations:
       summary: Unhealthy fan at instance {{ $labels.instance }}
-      description: Alerts when a fan in a server is anything else than normal.
+      description: "Alerts when a fan in a server is anything else than normal"
   - alert: 'cpu-overheating'
     expr: ipmi_temperature_celsius{name=~"CPU Temp|CPU0_TEMP"} > 95
     for: 1m
@@ -36,4 +36,4 @@ groups:
       host: {{ $labels.instance }}
     annotations:
       summary: CPU is overheating, the temperature is above 95°C on instance {{ $labels.instance }}
-      description: Alerts when the CPU overheats, triggers when it has a temperature above 95°C on a server.
+      description: "Alerts when the CPU overheats, triggers when it has a temperature above 95°C on a server."

@@ -1,5 +1,5 @@
 groups:
-- name: 'system-related'
+- name: system-related
   rules:
   - alert: 'mem-usage'
     expr: (node_memory_MemAvailable_bytes + node_zfs_arc_data_size) / node_memory_MemTotal_bytes * 100 < 8

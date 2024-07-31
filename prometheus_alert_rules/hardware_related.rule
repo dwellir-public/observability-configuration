@@ -8,7 +8,7 @@ groups:
       level: 4
       severity: critical
     annotations:
-      summary: Node-exporter is unresponsive on instance {{ $labels.instance }}
+      summary: "Node-exporter is unresponsive on instance {{ $labels.instance }}"
       description: >-
         This alert capture the status of node-exporter. It will alert if node-exporter is unresponsive for 5 minutes
         This could happen if the host itself is under high load or if the host itself gets unresponsive.
@@ -25,7 +25,7 @@ groups:
       #host: "{{ $labels.instance }}"
       #name: "{{ $labels.name }}"
     annotations:
-      summary: Unhealthy fan at instance {{ $labels.instance }}
+      summary: "Unhealthy fan at instance {{ $labels.instance }}"
       description: "Alerts when a fan in a server is anything else than normal"
 
   - alert: 'cpu-overheating'
@@ -37,5 +37,5 @@ groups:
       system: hardware
       #host: "{{ $labels.instance }}"
     annotations:
-      summary: CPU is overheating, the temperature is above 95°C on instance {{ $labels.instance }}
+      summary: "CPU is overheating, the temperature is above 95°C on instance {{ $labels.instance }}"
       description: "Alerts when the CPU overheats, triggers when it has a temperature above 95°C on a server."

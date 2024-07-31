@@ -1,6 +1,7 @@
 groups:
 - name: hardware_related
   rules:
+    # Checks if node-exporter is responsive
   - alert: 'node-exporter-status'
     expr: up{job="prometheus-node-exporter"}[5m] < 1
     for: 1m
@@ -14,7 +15,7 @@ groups:
         This could happen if the host itself is under high load or if the host itself gets unresponsive.
         Host = {{ $labels.instance }}
         Value = {{ $value }}
-
+    # Checks fan health on the machines
   - alert: 'fan-health'
     expr: ipmi_fan_speed_state > 0
     for: 1m
@@ -22,12 +23,11 @@ groups:
       level: 4
       severity: warning
       system: hardware
-      #host: "{{ $labels.instance }}"
-      #name: "{{ $labels.name }}"
+      host: "{{ $labels.instance }}"
     annotations:
       summary: "Unhealthy fan at instance {{ $labels.instance }}"
       description: "Alerts when a fan in a server is anything else than normal"
-
+    # Check if CPU is overheating (threeshold 95 c)
   - alert: 'cpu-overheating'
     expr: ipmi_temperature_celsius{name=~"CPU Temp|CPU0_TEMP"} > 95
     for: 1m
@@ -35,7 +35,7 @@ groups:
       level: 4
       severity: critical
       system: hardware
-      #host: "{{ $labels.instance }}"
+      host: "{{ $labels.instance }}"
     annotations:
       summary: "CPU is overheating, the temperature is above 95°C on instance {{ $labels.instance }}"
       description: "Alerts when the CPU overheats, triggers when it has a temperature above 95°C on a server."

@@ -16,17 +16,17 @@ groups:
         Host = {{ $labels.instance }}
         Value = {{ $value }}
     # Checks fan health on the machines
-  - alert: 'fan-health'
-    expr: ipmi_fan_speed_state > 0
-    for: 1m
-    labels:
-      level: 4
-      severity: warning
-      system: hardware
-      host: "{{ $labels.instance }}"
-    annotations:
-      summary: "Unhealthy fan at instance {{ $labels.instance }}"
-      description: "Alerts when a fan in a server is anything else than normal"
+#  - alert: 'fan-health'
+#    expr: ipmi_fan_speed_state > 0
+#    for: 1m
+#    labels:
+#      level: 4
+#      severity: warning
+#      system: hardware
+#      host: "{{ $labels.instance }}"
+#    annotations:
+#      summary: "Unhealthy fan at instance {{ $labels.instance }}"
+#      description: "Alerts when a fan in a server is anything else than normal"
     # Check if CPU is overheating (threeshold 95°C)
 #  - alert: 'cpu-overheating'
 #    expr: ipmi_temperature_celsius{name=~"CPU Temp|CPU0_TEMP"} > 95

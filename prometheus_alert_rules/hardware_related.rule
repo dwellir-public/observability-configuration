@@ -2,31 +2,31 @@ groups:
 - name: hardware_related
   rules:
     # Checks if node-exporter is responsive
-  - alert: 'node-exporter-status'
-    expr: up{job="prometheus-node-exporter"}[5m] < 1
-    for: 1m
-    labels:
-      level: 4
-      severity: critical
-    annotations:
-      summary: "Node-exporter is unresponsive on instance {{ $labels.instance }}"
-      description: >-
-        This alert capture the status of node-exporter. It will alert if node-exporter is unresponsive for 5 minutes
-        This could happen if the host itself is under high load or if the host itself gets unresponsive.
-        Host = {{ $labels.instance }}
-        Value = {{ $value }}
-    # Checks fan health on the machines
-#  - alert: 'fan-health'
-#    expr: ipmi_fan_speed_state > 0
+#  - alert: 'node-exporter-status'
+#    expr: up{job="prometheus-node-exporter"}[5m] < 1
 #    for: 1m
 #    labels:
 #      level: 4
-#      severity: warning
-#      system: hardware
-#      host: "{{ $labels.instance }}"
+#      severity: critical
 #    annotations:
-#      summary: "Unhealthy fan at instance {{ $labels.instance }}"
-#      description: "Alerts when a fan in a server is anything else than normal"
+#      summary: "Node-exporter is unresponsive on instance {{ $labels.instance }}"
+#      description: >-
+#        This alert capture the status of node-exporter. It will alert if node-exporter is unresponsive for 5 minutes
+#        This could happen if the host itself is under high load or if the host itself gets unresponsive.
+#        Host = {{ $labels.instance }}
+#        Value = {{ $value }}
+    # Checks fan health on the machines
+  - alert: 'fan-health'
+    expr: ipmi_fan_speed_state > 0
+    for: 1m
+    labels:
+      level: 4
+      severity: warning
+      system: hardware
+      host: "{{ $labels.instance }}"
+    annotations:
+      summary: "Unhealthy fan at instance {{ $labels.instance }}"
+      description: "Alerts when a fan in a server is anything else than normal"
     # Check if CPU is overheating (threeshold 95°C)
 #  - alert: 'cpu-overheating'
 #    expr: ipmi_temperature_celsius{name=~"CPU Temp|CPU0_TEMP"} > 95

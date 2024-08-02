@@ -28,3 +28,19 @@ groups:
         Check total containers egress bandwidth usage and alerts if above 80% \n
         Total: 2Gbit \n
         Value: {{ $value }}
+  # Check if retransmitted segments is high, alert if over 1 per second over 5 minutes
+  - alert: 'TCP error High retransmitted segments'
+    expr: irate(node_netstat_Tcp_RetransSegs{job="prometheus-node-exporter"}[5m]) > 1
+    for: 2m
+    labels:
+      level: 4
+      severity: warning
+      instance: {{ $labels.instance }}
+    annotations:
+      summary: Retransmitted segments has been over 1 per sec for 5 minutes on {{ $labels.instance }}
+      description: >-
+        Alerts when retransmitted segments is over 1 per sec over 5 min.
+        Value: {{ $values.B0.Labels.value }}
+        Host: {{ $values.B0.Labels.instance }}
+        Retransmitted Segments: This indicates the number of TCP segments that have been re-sent, 
+        containing data that was already sent previously due to potential loss or errors in transmission.
